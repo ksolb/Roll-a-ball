@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get and store the Rigidbody component attached to the player.
         rb = GetComponent<Rigidbody>();
-
+        rb.sleepThreshold = 0f;
         // Initialize count to zero.
         count = 0;
 
