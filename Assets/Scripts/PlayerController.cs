@@ -89,8 +89,22 @@ public class PlayerController : MonoBehaviour
         // Check if the count has reached or exceeded the win condition.
         if (count >= 8)
         {
+            // Destroy the enemy object when the player wins.
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
             // Display the win text.
             winTextObject.SetActive(true);
+
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Destroy the current object
+            Destroy(gameObject);
+            // Update the winText to display "You Lose!"
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
         }
     }
 }
